@@ -1,0 +1,595 @@
+/* ═══════════════════════════════════════════
+   PAGE WRAPPER
+═══════════════════════════════════════════ */
+.auth-page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  background: linear-gradient(145deg, #e8eeff 0%, #f0f4ff 50%, #eef1f8 100%);
+  color: #8892a0;
+}
+
+/* ═══════════════════════════════════════════
+   CARD PRINCIPAL (1000×600)
+═══════════════════════════════════════════ */
+.auth-main {
+  position: relative;
+  width: 1000px;
+  min-width: 1000px;
+  min-height: 600px;
+  height: 600px;
+  background: #ffffff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow:
+    0 30px 70px rgba(18, 10, 191, 0.14),
+    0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+@media (max-width: 1200px) { .auth-main { transform: scale(.75); } }
+@media (max-width: 1000px) { .auth-main { transform: scale(.65); } }
+@media (max-width: 800px)  { .auth-main { transform: scale(.5);  } }
+@media (max-width: 600px)  { .auth-main { transform: scale(.4);  } }
+
+/* ═══════════════════════════════════════════
+   CONTAINERS DOS FORMULÁRIOS
+═══════════════════════════════════════════ */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  width: 600px;
+  height: 100%;
+  padding: 40px;
+  background: #ffffff;
+  transition: 1.25s;
+}
+
+.auth-a-container {
+  z-index: 100;
+  left: calc(100% - 600px);
+  overflow-y: auto;
+  align-items: flex-start;
+}
+
+.auth-a-container::-webkit-scrollbar       { width: 4px; }
+.auth-a-container::-webkit-scrollbar-track { background: transparent; }
+.auth-a-container::-webkit-scrollbar-thumb { background: #dde3ee; border-radius: 2px; }
+
+.auth-b-container {
+  left: calc(100% - 600px);
+  z-index: 0;
+}
+
+/* ═══════════════════════════════════════════
+   BASE DOS FORMULÁRIOS
+═══════════════════════════════════════════ */
+.auth-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.auth-form_title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #0E213D;
+  line-height: 1.2;
+}
+
+/* ═══════════════════════════════════════════
+   FORMULÁRIO DE LOGIN
+═══════════════════════════════════════════ */
+.auth-login-form {
+  height: auto;
+  align-items: center;
+}
+
+.auth-login-form .auth-form_title {
+  margin-bottom: 4px;
+}
+
+.form__span {
+  font-size: 11px;
+  color: #b0b8c4;
+  margin-top: 14px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 360px;
+}
+
+.form__span::before,
+.form__span::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e8ecf2;
+}
+
+.form__input {
+  width: 360px;
+  height: 48px;
+  margin: 6px 0;
+  padding: 0 20px;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  color: #262323;
+  border: 1.5px solid #e4e9f0;
+  background: #f8fafc;
+  border-radius: 12px;
+  outline: none;
+  transition: .2s ease;
+}
+
+.form__input::placeholder { color: #b8bec8; }
+
+.form__input:focus {
+  border-color: #120ABF;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(18, 10, 191, 0.07);
+}
+
+.form__pass-wrapper {
+  position: relative;
+  width: 360px;
+}
+
+.form__pass-wrapper .form__input {
+  width: 100%;
+  padding-right: 44px;
+  margin: 6px 0;
+}
+
+.form__pass-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1;
+  padding: 0;
+  opacity: .6;
+  transition: opacity .15s;
+}
+
+.form__pass-toggle:hover { opacity: 1; }
+
+.form__link {
+  font-size: 12px;
+  color: #120ABF;
+  margin-top: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color .15s;
+  font-weight: 500;
+  align-self: center;
+}
+
+.form__link:hover {
+  color: #0E213D;
+  text-decoration: underline;
+}
+
+.auth-submit-btn {
+  width: 200px;
+  height: 50px;
+  border-radius: 25px;
+  margin-top: 32px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1.2px;
+  background: linear-gradient(135deg, #120ABF 0%, #2a20d4 100%);
+  color: #ffffff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: .2s ease;
+  box-shadow: 0 6px 20px rgba(18, 10, 191, 0.35);
+}
+
+.auth-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(18, 10, 191, 0.45);
+}
+
+.auth-submit-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(18, 10, 191, 0.3);
+}
+
+.auth-submit-btn:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ═══════════════════════════════════════════
+   PAINEL DE ALTERNÂNCIA (SWITCH)
+═══════════════════════════════════════════ */
+.auth-switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 400px;
+  padding: 50px;
+  z-index: 200;
+  transition: 1.25s;
+  background: linear-gradient(145deg, #0E213D 0%, #120ABF 60%, #2a20d4 100%);
+  overflow: hidden;
+}
+
+.auth-switch__circle {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  bottom: -60%;
+  left: -60%;
+  transition: 1.25s;
+}
+
+.auth-switch__circle--t {
+  top: -30%;
+  left: 60%;
+  width: 300px;
+  height: 300px;
+}
+
+.auth-switch__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  width: 400px;
+  padding: 50px 55px;
+  text-align: center;
+  transition: 1.25s;
+}
+
+.auth-switch__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+
+.auth-switch__logo {
+  width: 48px;
+  height: auto;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.4));
+}
+
+.brand-name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  line-height: 1;
+}
+
+.brand-pure   { color: #ffffff; }
+.brand-talent { color: #C9A84C; }
+
+.auth-switch__title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
+}
+
+.auth-switch__desc {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: .2px;
+  line-height: 1.75;
+  margin-top: 12px;
+}
+
+.auth-switch__btn {
+  width: 200px;
+  height: 50px;
+  border-radius: 25px;
+  margin-top: 32px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1.2px;
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  outline: none;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.auth-switch__btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.auth-switch__btn:active {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════
+   FORMULÁRIO DE CADASTRO
+═══════════════════════════════════════════ */
+.auth-reg-form {
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 16px 36px 20px;
+  height: auto;
+  min-height: 100%;
+}
+
+.auth-reg-form .auth-form_title {
+  font-size: 20px;
+  line-height: 1.2;
+  margin-bottom: 1px;
+}
+
+.auth-form__subtitle {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+/* ── Abas ── */
+.reg-tabs {
+  display: flex;
+  border-bottom: 2px solid #eaecf4;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.reg-tab {
+  background: none;
+  border: none;
+  outline: none;
+  padding: 6px 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #a0a8b4;
+  cursor: pointer;
+  position: relative;
+  transition: color .15s;
+}
+
+.reg-tab::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #120ABF;
+  transform: scaleX(0);
+  transition: transform .2s;
+}
+
+.reg-tab.active {
+  color: #120ABF;
+  font-weight: 600;
+}
+
+.reg-tab.active::after { transform: scaleX(1); }
+
+.reg-tab:hover:not(.active) { color: #555e6e; }
+
+/* ── Campos dentro do cadastro ── */
+.auth-main .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6px;
+  gap: 0;
+  width: 100%;
+}
+
+.auth-main .form-group label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #3a4557;
+  margin-bottom: 2px;
+}
+
+.auth-main .optional {
+  font-weight: 400;
+  color: #a0a8b4;
+  font-size: inherit;
+  margin-left: 0;
+}
+
+.auth-main .form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  width: 100%;
+}
+
+.auth-main .form-control {
+  width: 100%;
+  height: 34px;
+  padding: 0 11px;
+  font-size: 12px;
+  font-family: 'Inter', sans-serif;
+  color: #262323;
+  border: 1.5px solid #e4e9f0;
+  background: #f8fafc;
+  border-radius: 10px;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.auth-main select.form-control {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a0a8b4' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+  cursor: pointer;
+}
+
+.auth-main .form-control::placeholder { color: #b8bec8; }
+
+.auth-main .form-control:focus {
+  border-color: #120ABF;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(18, 10, 191, 0.07);
+}
+
+.auth-main .form-control.error {
+  border-color: #d32f2f;
+  background: #fff8f8;
+}
+
+.auth-main .form-control.error:focus {
+  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.07);
+}
+
+/* ── Toggle de senha ── */
+.auth-main .input-password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.auth-main .input-password-wrapper .form-control {
+  padding-right: 40px;
+}
+
+.auth-main .btn-toggle-pass {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1;
+  padding: 0;
+  opacity: .6;
+  transition: opacity .15s;
+}
+
+.auth-main .btn-toggle-pass:hover {
+  opacity: 1;
+  transform: translateY(-50%);
+}
+
+/* ── Erros de campo ── */
+.auth-main .field-error {
+  display: block;
+  font-size: 11px;
+  color: #d32f2f;
+  margin-top: 3px;
+  line-height: 1.3;
+}
+
+/* ── Alerta global de erro no formulário ── */
+.auth-main .alert-error {
+  width: 100%;
+  padding: 9px 13px;
+  background: #fff0f0;
+  border: 1px solid #ffcccc;
+  border-radius: 8px;
+  color: #c62828;
+  font-size: 12.5px;
+  margin-bottom: 12px;
+}
+
+/* ── Botão submit dos formulários de cadastro ── */
+.auth-main .btn.btn-primary {
+  background: linear-gradient(135deg, #120ABF 0%, #2a20d4 100%);
+  box-shadow: 0 6px 20px rgba(18, 10, 191, 0.35);
+  border-radius: 25px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1.2px;
+  height: 50px;
+  margin-top: 12px;
+  transition: .2s ease;
+}
+
+.auth-main .btn.btn-primary:hover {
+  background: linear-gradient(135deg, #120ABF 0%, #2a20d4 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(18, 10, 191, 0.45);
+}
+
+.auth-main .btn.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(18, 10, 191, 0.3);
+}
+
+/* ── Form interno dos componentes ── */
+.auth-reg-form form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ═══════════════════════════════════════════
+   CLASSES DE ANIMAÇÃO — NÃO ALTERAR
+═══════════════════════════════════════════ */
+.is-txr {
+  left: calc(100% - 400px);
+  transition: 1.25s;
+}
+
+.is-txl {
+  left: 0;
+  transition: 1.25s;
+}
+
+.is-z200 {
+  z-index: 200;
+  transition: 1.25s;
+}
+
+.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  transition: 1.25s;
+}
+
+.is-gx {
+  animation: is-gx 1.25s;
+}
+
+@keyframes is-gx {
+  0%, 10%, 100% { width: 400px; }
+  30%, 50%      { width: 500px; }
+}

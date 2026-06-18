@@ -1,0 +1,611 @@
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    background: linear-gradient(145deg, #e8eeff 0%, #f0f4ff 50%, #eef1f8 100%);
+    color: #8892a0;
+}
+
+/* Container principal */
+.main {
+    position: relative;
+    width: 1000px;
+    min-width: 1000px;
+    min-height: 600px;
+    height: 600px;
+    background: #ffffff;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow:
+        0 30px 70px rgba(18, 10, 191, 0.14),
+        0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+@media (max-width: 1200px) { .main { transform: scale(.75); } }
+@media (max-width: 1000px) { .main { transform: scale(.65); } }
+@media (max-width: 800px)  { .main { transform: scale(.5);  } }
+@media (max-width: 600px)  { .main { transform: scale(.4);  } }
+
+/* Containers dos formulários */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: 600px;
+    height: 100%;
+    padding: 40px;
+    background-color: #ffffff;
+    transition: 1.25s;
+}
+
+.a-container {
+    z-index: 100;
+    left: calc(100% - 600px);
+}
+
+.b-container {
+    left: calc(100% - 600px);
+    z-index: 0;
+}
+
+/* Formulário */
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #0E213D;
+    line-height: 1.2;
+}
+
+.form__icons {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.form__icon {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    opacity: .45;
+    transition: .15s;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 4px;
+    background: #f0f4ff;
+}
+
+.form__icon:hover {
+    opacity: 1;
+    background: #e4eaff;
+}
+
+.form__span {
+    font-size: 11px;
+    color: #b0b8c4;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 360px;
+}
+
+.form__span::before,
+.form__span::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e8ecf2;
+}
+
+.form__input {
+    width: 360px;
+    height: 48px;
+    margin: 6px 0;
+    padding: 0 20px;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    color: #262323;
+    border: 1.5px solid #e4e9f0;
+    background: #f8fafc;
+    border-radius: 12px;
+    outline: none;
+    transition: .2s ease;
+}
+
+.form__input::placeholder {
+    color: #b8bec8;
+}
+
+.form__input:focus {
+    border-color: #120ABF;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(18, 10, 191, 0.07);
+}
+
+.form__link {
+    font-size: 12px;
+    color: #120ABF;
+    margin-top: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: .15s;
+    font-weight: 500;
+}
+
+.form__link:hover {
+    color: #0E213D;
+    text-decoration: underline;
+}
+
+/* Botão */
+.button {
+    width: 200px;
+    height: 50px;
+    border-radius: 25px;
+    margin-top: 32px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 1.2px;
+    background: linear-gradient(135deg, #120ABF 0%, #2a20d4 100%);
+    color: #ffffff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: .2s ease;
+    box-shadow: 0 6px 20px rgba(18, 10, 191, 0.35);
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(18, 10, 191, 0.45);
+}
+
+.button:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 10px rgba(18, 10, 191, 0.3);
+}
+
+/* Painel de alternância */
+.switch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 400px;
+    padding: 50px;
+    z-index: 200;
+    transition: 1.25s;
+    background: linear-gradient(145deg, #0E213D 0%, #120ABF 60%, #2a20d4 100%);
+    overflow: hidden;
+}
+
+/* Círculos decorativos do painel */
+.switch__circle {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    bottom: -60%;
+    left: -60%;
+    transition: 1.25s;
+}
+
+.switch__circle--t {
+    top: -30%;
+    left: 60%;
+    width: 300px;
+    height: 300px;
+}
+
+.switch__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    width: 400px;
+    padding: 50px 55px;
+    text-align: center;
+    transition: 1.25s;
+}
+
+/* Logo e nome da marca no painel */
+.switch__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 36px;
+}
+
+.switch__logo {
+    width: 48px;
+    height: auto;
+    filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.4));
+}
+
+.brand-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    line-height: 1;
+}
+
+.brand-pure   { color: #ffffff; }
+.brand-talent { color: #C9A84C; }
+
+.switch__title {
+    font-size: 24px;
+    color: #ffffff;
+    line-height: 1.25;
+}
+
+.description {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: .2px;
+    line-height: 1.75;
+    margin-top: 12px;
+}
+
+.switch__button {
+    cursor: pointer;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.55);
+    color: #ffffff;
+    box-shadow: none;
+}
+
+.switch__button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    transition: .25s;
+}
+
+.switch__button:active,
+.switch__button:focus {
+    background: rgba(255, 255, 255, 0.18);
+    transform: translateY(0);
+    transition: .2s;
+}
+
+/* Classes de animação — não alterar, usadas pelo script.js */
+.is-txr {
+    left: calc(100% - 400px);
+    transition: 1.25s;
+    transform-origin: left;
+}
+
+.is-txl {
+    left: 0;
+    transition: 1.25s;
+    transform-origin: right;
+}
+
+.is-z200 {
+    z-index: 200;
+    transition: 1.25s;
+}
+
+.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    transition: 1.25s;
+}
+
+.is-gx {
+    animation: is-gx 1.25s;
+}
+
+@keyframes is-gx {
+    0%, 10%, 100% { width: 400px; }
+    30%, 50%      { width: 500px; }
+}
+
+/* ══════════════════════════════════════
+   FORMULÁRIO DE CADASTRO — VERSÃO COMPLETA
+   ══════════════════════════════════════ */
+
+#a-container {
+    overflow-y: auto;
+    align-items: flex-start;
+}
+
+#a-container::-webkit-scrollbar { width: 4px; }
+#a-container::-webkit-scrollbar-track { background: transparent; }
+#a-container::-webkit-scrollbar-thumb { background: #dde3ee; border-radius: 2px; }
+
+.reg-form {
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 16px 36px 20px;
+    min-height: 100%;
+    width: 100%;
+}
+
+.reg-form .form_title {
+    font-size: 20px;
+    line-height: 1.2;
+    margin-bottom: 1px;
+}
+
+.reg-form .form__subtitle {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+
+/* ── Abas ── */
+.reg-tabs {
+    display: flex;
+    border-bottom: 2px solid #eaecf4;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.reg-tab {
+    background: none;
+    border: none;
+    outline: none;
+    padding: 6px 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #a0a8b4;
+    cursor: pointer;
+    position: relative;
+    transition: color .15s;
+    border-radius: 0;
+    box-shadow: none;
+    margin-top: 0;
+    width: auto;
+    height: auto;
+    letter-spacing: 0;
+}
+
+.reg-tab::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #120ABF;
+    transform: scaleX(0);
+    transition: transform .2s;
+}
+
+.reg-tab.active {
+    color: #120ABF;
+    font-weight: 600;
+}
+
+.reg-tab.active::after { transform: scaleX(1); }
+
+.reg-tab:hover:not(.active) {
+    color: #555e6e;
+    transform: none;
+    box-shadow: none;
+}
+
+/* ── Painéis ── */
+.reg-panel {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+}
+
+.reg-panel.active { display: flex; }
+
+/* ── Grupos de campo ── */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 6px;
+    width: 100%;
+}
+
+.form-group label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #3a4557;
+    margin-bottom: 2px;
+}
+
+.optional {
+    font-weight: 400;
+    color: #a0a8b4;
+}
+
+.form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    width: 100%;
+}
+
+/* ── Inputs do formulário de cadastro ── */
+.form-control {
+    width: 100%;
+    height: 34px;
+    padding: 0 11px;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    color: #262323;
+    border: 1.5px solid #e4e9f0;
+    background: #f8fafc;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+select.form-control {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a0a8b4' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+    cursor: pointer;
+}
+
+.form-control::placeholder { color: #b8bec8; }
+
+.form-control:focus {
+    border-color: #120ABF;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(18, 10, 191, 0.07);
+}
+
+.form-control.error {
+    border-color: #d32f2f;
+    background: #fff8f8;
+}
+
+.form-control.error:focus {
+    box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.07);
+}
+
+/* ── Senha com toggle ── */
+.input-password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.input-password-wrapper .form-control {
+    padding-right: 40px;
+}
+
+.btn-toggle-pass {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 1;
+    padding: 0;
+    width: auto;
+    height: auto;
+    margin-top: 0;
+    box-shadow: none;
+    border-radius: 0;
+    opacity: .6;
+    transition: opacity .15s;
+}
+
+.btn-toggle-pass:hover {
+    transform: translateY(-50%);
+    box-shadow: none;
+    opacity: 1;
+}
+
+/* ── Barra de força da senha ── */
+.strength-bar-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 3px;
+}
+
+.strength-segments {
+    display: flex;
+    gap: 4px;
+    flex: 1;
+}
+
+.strength-segment {
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    background: #e8ecf4;
+    transition: background .3s;
+}
+
+.strength-label {
+    font-size: 11px;
+    font-weight: 600;
+    min-width: 52px;
+    text-align: right;
+}
+
+/* ── Erros de campo ── */
+.field-error {
+    display: block;
+    font-size: 11px;
+    color: #d32f2f;
+    margin-top: 3px;
+    min-height: 0;
+    line-height: 1.3;
+}
+
+/* ── Alerta global ── */
+.alert-error {
+    width: 100%;
+    padding: 9px 13px;
+    background: #fff0f0;
+    border: 1px solid #ffcccc;
+    border-radius: 8px;
+    color: #c62828;
+    font-size: 12.5px;
+    margin-bottom: 12px;
+}
+
+/* ── Botão de submit do cadastro ── */
+#reg-submit-btn {
+    align-self: center;
+    margin-top: 12px;
+}
+
+#reg-submit-btn.btn-full {
+    width: 100%;
+    border-radius: 12px;
+    height: 50px;
+    font-size: 14px;
+}
+
+@media (max-width: 1200px) {
+    #reg-submit-btn.btn-full { height: 64px; font-size: 18px; border-radius: 16px; }
+}
+@media (max-width: 800px) {
+    #reg-submit-btn.btn-full { height: 90px; font-size: 24px; border-radius: 22px; }
+}
+@media (max-width: 600px) {
+    #reg-submit-btn.btn-full { height: 110px; font-size: 28px; border-radius: 28px; }
+}
